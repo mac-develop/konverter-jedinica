@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mass</title>
+</head>
+<body class="w-full h-full">
+    <div class="px-2 flex justify-between items-baseline">
+        <h1 class="text-center text-4xl">Unit Converter</h1>
+        <p>mac-develop</p>
+    </div>
+    <ul class="w-full bg-amber-400 p-2 m-2 mx-auto flex justify-evenly align-middle items-center">
+        <li><a href="/">Length</a></li>
+        <li class="font-bold"><a href="/mass">Mass</a></li>
+        <li><a href="/temp">Temperature</a></li>
+    </ul>
+    <% if (result === null) { %>
+        <form action="/mass" method="POST" class="text-center p-4 mx-auto my-4 border-2 w-fit">
+            <p class="font-bold p-4 m-2">Enter the weight to convert:</p>
+            <input type="number" name="value" step="any" class="border-2 p-2" required>
+
+            <p class="m-4">From:</p>
+            <select name="unit_from" class="bg-cyan-700 p-2">
+                <option value="mg">Miligram</option>
+                <option value="g">Gram</option>
+                <option value="kg">Kilogram</option>
+            </select>
+
+            <p>To:</p>
+            <select name="unit_to" class="bg-cyan-700 p-2">
+                <option value="mg">Miligram</option>
+                <option value="g">Gram</option>
+                <option value="kg">Kilogram</option>
+            </select>
+
+            <br><br>
+            <button type="submit" class="bg-amber-400 rounded-2xl p-2">Convert</button>
+        </form>
+    <% } else { %>
+        <div class="m-2 p-2">
+            <h3 class="p-2 text-2xl text-center font-bold">Result of your calculation</h3>
+            <h2 class="p-2 text-center"><%= original_value %> <%= unit_from %> = <%= result %> <%= unit_to %></h2>
+            <a href="/mass" class="p-2 flex justify-center items-center"><button class="p-2 bg-amber-400 rounded-2xl">Reset</button></a>
+        </div>
+    <% } %>
+</body>
+</html>
